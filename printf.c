@@ -43,6 +43,16 @@ int _printf(const char *format, ...)
 			}
 			break;
 
+			case 'd':
+			case 'i':
+			{
+				int num = va_arg(ahm, int);
+				char buffer[12];
+				int len = snprintf(buffer, sizeof(buffer), "%d", num);
+				count += write(1, buffer, len);
+			}
+			break;
+
 			case '%':
 				count += write(1, "%", 1);
 				break;
